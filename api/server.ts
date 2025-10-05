@@ -6,6 +6,7 @@ import authRouter from './routes/auth';
 import authMiddleware from './middleware/authMiddleware'; 
 import donationsRouter from './routes/donations';
 import profilesRouter from './routes/profiles';
+import morgan from 'morgan';
 
 interface AuthRequest extends Request {
     user?: { id: string, user_type: string };
@@ -16,6 +17,7 @@ const PORT = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
+app.use(morgan('dev'));
 
 app.use('/api/auth', authRouter);
 app.use('/api/donations', donationsRouter); 
