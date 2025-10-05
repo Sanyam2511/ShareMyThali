@@ -5,6 +5,7 @@ import 'dotenv/config';
 import authRouter from './routes/auth';
 import authMiddleware from './middleware/authMiddleware'; 
 import donationsRouter from './routes/donations';
+import profilesRouter from './routes/profiles';
 
 interface AuthRequest extends Request {
     user?: { id: string, user_type: string };
@@ -18,6 +19,7 @@ app.use(express.json());
 
 app.use('/api/auth', authRouter);
 app.use('/api/donations', donationsRouter); 
+app.use('/api/profiles', profilesRouter); 
 
 app.get('/', (req: Request, res: Response) => {
     res.send('ShareMyThali API is running.');
